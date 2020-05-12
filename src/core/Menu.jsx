@@ -29,7 +29,7 @@ const Menu = ({ history }) => (
             <Link className="nav-link" onClick={() => signout()} to = '/' >Sign Out</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to = '#' >{isAuthenticated().user.name}</Link>
+            <Link className="nav-link" to = {`/user/${isAuthenticated().user._id}`} >{`${isAuthenticated().user.name}'s profile`}</Link>
           </li>
         </>
       }
