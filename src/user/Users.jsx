@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { list } from './apiUser';
+import DefaultImage from '../images/avatar.png';
+import { Link } from 'react-router-dom';
 
 
 class Users extends Component {
@@ -24,11 +26,11 @@ class Users extends Component {
     <div className='row'>
       {users.map((user, index) => (
         <div className="card col-md-4" key={index}>
-        <img className="card-img-top" src="..." alt="Card cap" />
+        <img className="card-img-top" src={DefaultImage} alt={user.name} style={{width : '100%', height : '15vw', objectFit : 'cover'}} />
         <div className="card-body">
           <h5 className="card-title">{user.name}</h5>
       <p className="card-text">{user.email}</p>
-          <a href="#kjk" className="btn btn-primary btn-raised btn-sm">VIEW PROFILE</a>
+          <Link to={`/user/${user._id}`} className="btn btn-primary btn-raised btn-sm">VIEW PROFILE</Link>
         </div>
       </div>)
       )}
