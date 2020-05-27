@@ -35,13 +35,15 @@ export const authenticate = (jwt, next) => {
   }
 }
 
-export const signout = () => {
+export const signout = (next) => {
   if(typeof window !== 'undefined') localStorage.removeItem('jwt')
-  return fetch(`${process.env.REACT_APP_API_URL}/logout`, {
+  next();
+  return fetch(`${process.env.REACT_APP_API_URL}/signout`, {
     method : 'GET'
   })
   .then(response => {
-    return response.json()
+    console.log('signout');
+    return response.json();
   })
   .catch(err => console.log(err))
 }
